@@ -1,10 +1,12 @@
 const request = require('request')
 
-module.exports = (url) => {
+module.exports = (url, done) => {
     request(url, (error, response, body) => {
-        process.stdout.write('There was an error:' + error)
-        process.stdout.write('statusCode:' + response.statusCode)
-        process.stdout.write('body:' + body)
-        process.stdout.write('\nprompt > ')
+        if (error) {
+            done('There was an error:' + error.message)
+        } else {
+            done('statusCode:' + response.statusCode)
+            done('body:' + body)
+        }
     })
 }

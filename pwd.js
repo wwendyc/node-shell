@@ -1,6 +1,5 @@
-const fn = () => {
-    process.stdout.write(process.cwd())
-    process.stdout.write('\nprompt > ')
+const fn = (done) => {
+    done(process.cwd())
 }
 
 module.exports = fn
